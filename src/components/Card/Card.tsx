@@ -4,18 +4,23 @@ import { GiphyData } from "../../models/giphy";
 
 const property = "preview_gif";
 
-export const Card = ({ id, title, images, alt_text }: GiphyData) => {
+export const Card = ({ id, title, images, alt_text, url }: GiphyData) => {
   const [loaded, setLoaded] = useState(false);
 
   const handleLoad = () => {
     setLoaded(true);
   };
+
+  const handleClick = () => {
+    window.open(url, "_blank");
+  };
   return (
     <div
       data-id={id}
-      className="rounded-sm border-gray-500 overflow-hidden flex h-44 gap-4 bg-white"
+      onClick={handleClick}
+      className="rounded-sm border-gray-500 overflow-hidden flex flex-col gap-4 bg-white cursor-pointer hover:scale-[102%] transition-transform"
     >
-      <div className="relative h-44 w-44 overflow-hidden flex-shrink-0 leading-none">
+      <div className="relative h-[300px] w-full overflow-hidden flex-shrink-0 leading-none">
         {!loaded && <Skeleton height="100%" width="100%" />}
         <img
           src={images[property].url}

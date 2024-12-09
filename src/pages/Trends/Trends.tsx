@@ -1,4 +1,4 @@
-import { Card } from "../../components";
+import { Card, Pagination } from "../../components";
 import { useTrends } from "./Trends.hooks";
 
 export const Trends = () => {
@@ -6,7 +6,9 @@ export const Trends = () => {
 
   return (
     <div className="space-y-10">
-      <h2 className="font-bold text-4xl text-left">Giphy Searcher</h2>
+      <h2 className="font-bold text-4xl text-left text-gray-800">
+        Giphy Searcher
+      </h2>
       <input
         onChange={handleSearch}
         className="border-slate-300 bg-slate-100 p-4 rounded-sm w-full shadow-lg"
@@ -19,6 +21,7 @@ export const Trends = () => {
           <Card key={trend.id} {...trend} />
         ))}
       </div>
+      <Pagination />
     </div>
   );
 };

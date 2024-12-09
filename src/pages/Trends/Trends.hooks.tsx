@@ -1,9 +1,10 @@
 import { ChangeEvent, useEffect, useState, useTransition } from "react";
 import { getGifs, getTrends } from "../../services/api";
 import { debounce } from "../../utils";
+import { GiphyTrendsResponse } from "../../models/giphy";
 
 export const useTrends = () => {
-  const [trends, setTrends] = useState([]);
+  const [trends, setTrends] = useState<GiphyTrendsResponse | undefined>();
   const [loading, startTransition] = useTransition();
 
   const initialLoad = () => {
